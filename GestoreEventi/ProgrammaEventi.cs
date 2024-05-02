@@ -10,7 +10,7 @@ namespace GestoreEventi
     {
         // Attributi per ProgrammaEventi
         private string titolo;
-        private List<Evento> eventi;
+        public List<Evento> eventi;
 
         // Costruttore
         public ProgrammaEventi(string titolo)
@@ -31,6 +31,17 @@ namespace GestoreEventi
             return eventi.FindAll(evento => evento.Data.Date == data.Date);
         }
 
-       
+        // Metodo statico per stampare la lista di eventi
+        public static string StampaEventi(List<Evento> eventi)
+        {
+            StringBuilder listEvent = new StringBuilder();
+            foreach (var evento in eventi)
+            {
+                listEvent.AppendLine(evento.ToString());
+            }
+            return listEvent.ToString();
+        }
+
+        
     }
 }
