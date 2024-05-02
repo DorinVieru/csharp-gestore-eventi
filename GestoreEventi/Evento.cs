@@ -67,5 +67,36 @@ namespace GestoreEventi
                 postiPrenotati = value;
             }
         }
+
+        // Metodi per prenotare o disdire un posto
+        public void PrenotaPosti(int numPosti)
+        {
+            if (Data < DateTime.Now)
+                throw new Exception("Impossibile prenotare i posti. Verifica la data dell'evento.");
+
+            if (CapienzaMassima == 0)
+                throw new Exception("Impossibile prenotare i posti. Verifica la capienza massima disponibile.");
+
+            if(PostiPrenotati + numPosti > CapienzaMassima)
+                throw new Exception("Impossibile prenotare i posti. Verifica i posti disponibili.");
+
+            PostiPrenotati += numPosti;
+        }
+
+        public void DisdiciPosti(int numPosti)
+        {
+            if (Data < DateTime.Now)
+                throw new Exception("Impossibile disdire i posti. Verifica la data dell'evento.");
+            
+            if (numPosti <= 0 || PostiPrenotati - numPosti < 0)
+                throw new Exception("Impossibile disdire i posti. Verifica la disponibilità di posti che puoi ancora disdire.");
+
+            PostiPrenotati -= numPosti;
+        }
+
+        public override string ToString()
+        {
+            return $"{Data.ToString("dd/MM/yyyy")} - {Titolo}";
+        }
     }
 }
