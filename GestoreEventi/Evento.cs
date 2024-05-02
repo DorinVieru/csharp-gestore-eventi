@@ -30,7 +30,7 @@ namespace GestoreEventi
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Deve esserci un titolo, non è possibile lasciare vuoto questo campo.");
+                    throw new Exception("Deve esserci un titolo, non è possibile lasciare vuoto questo campo.");
                 titolo = value;
             }
         }
@@ -41,7 +41,7 @@ namespace GestoreEventi
             set
             {
                 if (value < DateTime.Now)
-                    throw new ArgumentOutOfRangeException("La data inserita non può essere precedente alla data corrente.");
+                    throw new Exception("La data inserita non può essere precedente alla data corrente.");
                 data = value;
             }
         }

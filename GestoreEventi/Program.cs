@@ -66,14 +66,36 @@
             // MILESTONE 3 E 4
             {
                 // Creazione di un nuovo programma eventi
-                Console.Write("Inserisci il titolo del tuo programma eventi: ");
-                string titoloProgrammaEventi = Console.ReadLine();
+                Console.Write("\n******************\nInserisci il titolo del tuo programma eventi: ");
+                string titoloProgramEvent = Console.ReadLine();
 
-                ProgrammaEventi programmaEventi = new ProgrammaEventi(titoloProgrammaEventi);
+                ProgrammaEventi programEvent = new ProgrammaEventi(titoloProgramEvent);
 
                 // Chiedere all'utente il numero di avebti che vuole aggiungere
                 Console.Write("Quanti eventi vuoi aggiungere? ");
-                int numeroEventiDaAggiungere = int.Parse(Console.ReadLine());
+                int numAddEvent = int.Parse(Console.ReadLine());
+
+                // Ciclo che mi permettere di inserire un evento per il numero richiesto dall'utente in precedenza
+                for (int i = 0; i < numAddEvent; i++)
+                {
+                    Console.WriteLine($"\n******************\nInserisci i dettagli del {(i + 1)}° evento ");
+                    Console.Write("Titolo dell'evento: ");
+                    string titolo = Console.ReadLine();
+                    Console.Write("Data dell'evento (formato dd/MM/yyyy): ");
+                    DateTime data = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Capienza massima dell'evento: ");
+                    int capienzaMassima = int.Parse(Console.ReadLine());
+
+                    try
+                    {
+                        Evento evento = new Evento(titolo, data, capienzaMassima);
+                        programEvent.AggiungiEvento(evento);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Si è verificato un errore: {ex.Message} L'evento non è stato aggiunto.");
+                    }
+                }
 
                 
             }
