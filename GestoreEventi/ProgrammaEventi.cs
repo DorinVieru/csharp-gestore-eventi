@@ -19,6 +19,18 @@ namespace GestoreEventi
             this.eventi = new List<Evento>();
         }
 
-        
+        // Metodo per aggiungere un evento alla lista
+        public void AggiungiEvento(Evento evento)
+        {
+            eventi.Add(evento);
+        }
+
+        // Metodo per avere gli eventi in una certa data
+        public List<Evento> GetEventData(DateTime data)
+        {
+            return eventi.FindAll(evento => evento.Data.Date == data.Date);
+        }
+
+       
     }
 }
