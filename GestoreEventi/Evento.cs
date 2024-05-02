@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestoreEventi
 {
-    internal class Evento
+    public class Evento
     {
         // Attributi classe evento
         private string titolo;

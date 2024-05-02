@@ -37,7 +37,28 @@
                 prenotazione = Console.ReadLine().ToLower();
             }
 
-         
+            // Cancellazione dei posti
+            Console.WriteLine("\nDesideri disdire dei posti? (digita si / no)");
+            string disdizione = Console.ReadLine().ToLower();
+            while (disdizione == "si")
+            {
+                Console.Write("Quanti posti vuoi disdire? ");
+                int numPosti = int.Parse(Console.ReadLine());
+                try
+                {
+                    evento.DisdiciPosti(numPosti);
+                    Console.WriteLine($"Hai disdetto {numPosti} posti. \nPosti prenotati - {evento.PostiPrenotati} \nPosti disponibili - {evento.CapienzaMassima - evento.PostiPrenotati}");
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(error.Message);
+                }
+
+                Console.WriteLine("\nDesideri disdire ancora dei posti? (digita si / no)");
+                disdizione = Console.ReadLine().ToLower();
+            }
+
+            Console.WriteLine("\nA presto!");
         }
     }
 }
