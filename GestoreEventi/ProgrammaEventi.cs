@@ -42,6 +42,22 @@ namespace GestoreEventi
             return listEvent.ToString();
         }
 
-        
+        // Metodo per ottenere il numero di eventi
+        public int NumEventi()
+        {
+            return eventi.Count;
+        }
+
+        // Metodo per svuotare la lista di eventi
+        public void DelEventi()
+        {
+            eventi.Clear();
+        }
+
+        // Metodo che mostra il titolo del programma e tutti gli eventi aggiunti alla lista
+        public string MostraTitoloEventi()
+        {
+            return $"Titolo: {titolo}\n{StampaEventi(eventi)}";
+        }
     }
 }
