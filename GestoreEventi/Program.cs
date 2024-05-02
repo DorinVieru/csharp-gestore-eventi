@@ -62,7 +62,7 @@
 
                 Console.WriteLine("\nOra passa al passaggio successivo! Inizia ad organizzare più eventi!");
             }
-
+ 
             // MILESTONE 3 E 4
             {
                 // Creazione di un nuovo programma eventi
@@ -97,7 +97,35 @@
                     }
                 }
 
-                
+                // Stampare il numero di eventi presenti
+                Console.WriteLine($"\nIl programma eventi '{titoloProgramEvent}' contiene {programEvent.NumEventi()} eventi.");
+
+                // Stampare la lista di eventi
+                Console.WriteLine("\n******************\nEcco la lista del tuo programma di eventi:");
+                Console.WriteLine(ProgrammaEventi.StampaEventi(programEvent.eventi));
+
+                // Chiedere una data e stampare tutti gli eventi in quella data
+                Console.Write("\nInserisci una data per visualizzare gli eventi (formato dd/MM/yyyy): ");
+                DateTime dataView = DateTime.Parse(Console.ReadLine());
+                // Verifico se ci sono eventi per la data inserita
+                bool hasEventsForDate = programEvent.eventi.Any(evento => evento.Data.Date == dataView.Date);
+                // Condizione
+                if (!hasEventsForDate)
+                {
+                    Console.WriteLine("Non è presente nessun evento nella data digitata.");
+                }
+                else
+                {
+                    List<Evento> eventiInData = programEvent.GetEventData(dataView);
+                    Console.WriteLine($"\nGli eventi in data {dataView.ToShortDateString()} sono:");
+                    Console.WriteLine(ProgrammaEventi.StampaEventi(eventiInData));
+                }
+
+                // Eliminare tutti gli eventi
+                programEvent.DelEventi();
+                Console.WriteLine("\nTutti gli eventi sono stati eliminati dal programma eventi.");
+
+                Console.WriteLine("\nCiao ciao a presto!");
             }
         }
     }
